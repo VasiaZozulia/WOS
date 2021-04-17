@@ -1,0 +1,43 @@
+---
+  - hosts: all
+    become: yes
+    tasks:
+      - name: Copy docker script for Ubuntu
+        copy:
+          src: /etc/ansible/playbooks/ci_cd_ubuntu.sh
+          dest: /home/ci_cd_ubuntu.sh
+          mode: u=rwx,g=rx,o=rx
+        when: ansible_os_family == 'Debian'
+
+      - name: Run installation script
+        shell: /home/ci_cd_ubuntu.sh
+        when: ansible_os_family == "Debian"
+
+      - name: Delete installation script
+        file:
+          path: /home/ci_cd_ubuntu.sh
+          state: absent
+        when: ansible_os_family == "Debian"
+
+
+
+
+      - name: Copy docker script for RedHat
+        copy:
+          src: /etc/ansible/playbooks/ci_cd_redhat.sh
+          dest: /home/ci_cd_redhat.sh
+          mode: u=rwx,g=rx,o=rx
+        when: ansible_os_family == 'RedHat'
+
+      - name: Run installation script
+        shell: /home/ci_cd_redhat.sh
+        when: ansible_os_family == "RedHat"
+
+      - name: Delete installation script
+        file:
+          path: /home/ci_cd_redhat.sh
+          state: absent
+        when: ansible_os_family == "RedHat"
+
+
+

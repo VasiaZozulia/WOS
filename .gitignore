@@ -4,3 +4,4 @@
 /frontend/package-lock.json
 /backend/secret.js
 /backend/config/config.env
+/tf/stockholm.pem
