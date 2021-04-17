@@ -15,7 +15,7 @@ pipeline  {
             steps {
                 echo 'Creating docker image ...'
                 dir('.'){
-                    sh "docker build -t macnaer/wos2 . "
+                    sh "docker build -t vasiazozulia/wos2 . "
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline  {
             steps {
                 echo " ============== pushing image =================="
                 sh '''
-                docker push macnaer/wos2:latest
+                docker push vasiazozulia/wos2:latest
                 '''
             }
         }
@@ -57,7 +57,7 @@ pipeline  {
             steps {
                 echo " ============== starting chatterbox server =================="
                 sh '''
-                docker run -d --restart=always --name wos2 -p 80:3000 macnaer/wos2
+                docker run -d --restart=always --name wos2 -p 80:3000 vasiazozulia/wos2
                 '''
             }
         }
