@@ -41,7 +41,7 @@ pipeline  {
             steps {
                 echo " ============== stoping all images =================="
                 sh '''
-                docker stop wos2
+                docker stop vasiazozulia/wos2
                 '''
             }
         } 
@@ -49,7 +49,7 @@ pipeline  {
             steps {
                 echo " ============== removing all docker containers =================="
                 sh '''
-                docker rm wos2
+                docker rm vasiazozulia/wos2
                 '''
             }
         }
